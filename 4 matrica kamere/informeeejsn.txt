@@ -1,0 +1,31 @@
+np.linalg.det()
+np.linalg.inv()
+np.linalg.qr()
+np.diag()
+np.linalg.svd()
+
+01:
+np.delete(T,0,1) - T je matrica; 0 je redni broj reda/kolone koja se brise; 1 je znak da se brise kolona, 0 bi bila da se brise vrsta
+
+za datu matricu kamere T, centar C (c1:c2:c3:c4) je resenje jednacine TC=0 sto su 3 linearne homogene jne sa 4 nepoznate
+resenje je proporcionalno minorima matrice T (dodatno delimo sa -1/c4 da bi na kraju bila jedinica po zahtevu zadatka)
+
+02 03:
+
+matrici kamere sklanjamo poslednju kolonu, invertujemo je jer nemamo RQ dekomp samo QR dekomp
+radimo QR, osiguravamo da su na dijagonali Q i R pozitivni brojevi, inace mnozimo sa np.diag() gde je jedan kec negativan
+K = R^-1, A = Q
+za A moramo jos da proverimo da je determinanta pozitivna
+
+uvek mozemo da je razlozimo na proizvod gornje trougaone matrice i ortonomirane baze kamere u sv koor sistemu
+ta gornje trougaona je K
+
+R-gornje trougaona Q-ortogonalna
+
+04:
+
+formira se matrica (2n)x(12)
+(   0   , -x3'*X, x2'*X  )
+( x3'*X ,   0   , -x1'*X )
+radi se svd nad njom, dobijamo U,V,Vh
+Vh[-1] se uzima i ona je [1][12] pa se radi reshape(3,4) nad njom
