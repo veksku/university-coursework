@@ -1,0 +1,12 @@
+Indeksi:
+Pravljenje: CREATE INDEX naziv_indeksa ON naziv_tabele (ime_polja) za B+
+
+CREATE INDEX naziv_indeksa ON naziv_tabele USING HASH (ime_polja)
+
+CREATE INDEX naziv_indeksa ON naziv_tabele USING BRIN (ime_polja)
+
+B+ indeks se koristi: upiti poredjenja ili intervala (BETWEEN,IN,<,>,<=,>=,=) za male i srednje tabele
+
+BRIN indeks: kada se radi na vecim tabelama i imamo (<,>,<=,>=,=) ali zahteva da su sortirani podaci
+
+HASH: samo se koristi za poredjenje na jednakost (=)

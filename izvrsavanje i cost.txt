@@ -1,0 +1,27 @@
+Plan izvrsavanja:
+Selektivnost:
+S(A=a)=1/(broj jedinstvenih vrednosti A u toj tabeli)
+S(A>a)= (maksimalna vrednost A u tabeli - a)/(maksimalna vrednost A u tabeli - minimalna vrednost A u tabeli)
+S(A<a)= (a - minimalna vrednost A u tabeli)/(maksimalna vrednost A u tabeli - minimalna vrednost A u tabeli)
+S(P & Q)= S(P)*S(Q)
+S(P | Q)= S(P)+S(Q)-S(P)*S(Q)
+
+Kardinalnost:
+card(T1 join T2 on P) = S(P)*card(T1)*card(T2) 
+card(T filter by P)= S(P)*card(T)
+card(T) - broj razlicitih elemenata u toj tabeli (npr. tabela Racuni ima 1000 razlicitih ID i na osnovu toga je card(T)=1000)
+
+pages(T)=rows(T)/PF(T), rows(T) daju u zadatku a PF(T)=(velicina stranice u bajtovima)/(zbir velicine svih atributa)
+
+Velicine atributa:
+CHAR(N)=N, VARCHAR(N)=N/2,INT=4,DATE=3(uglv daju za date ako je drugacije)
+
+Za JOIN:
+Block Neasted Loop Join: pages(T1)+pages(T1)*pages(T2), gde je T1 tabela sa manje stranica
+HASH Join: 3*(pages(T1)+pages(T2))
+Sort-Merge Join: pages(T1)+pages(T2)+2*(pages(T1)*log2(pages(T1)))+2*(pages(T2)*log2(pages(T2)))
+
+Za COST:
+Ukoliko je operacija JOIN: cost(T)= formuli za taj JOIN
+Ukoliko je filter: cost(T1 filter by P)= pages(T1)+pages(T2), gde je T1 pre filter a T2 posle filter 
+Ukoliko je projection: cost(T)= pages(T)

@@ -1,0 +1,17 @@
+Normalizacija:
+Ako se atribut ne javlja sa desne strane nijedne FZ onda je on sigurno deo kandidata za kljuc 
+Ako se atribut javlja sa desne strane neke FZ onda on sigurno nije deo kandidata za kljuc 
+
+1NF - ako svaki atribut je jednoznacno odredjen tj. nema redudantnosti (npr. dva ista imena sa razlicitim godinama)
+
+2NF - nema nekljucnih atributa koji funkcionalno zavise od pravog podskupa nekog kandidata za kljuc
+SVI NE-KLJUC ATRIBUTI MORAJU DA ZAVISE OD CELOG PRIMARNOG KLJUCA NOVIH TABELA
+
+3NF - za svaku FZ X->A gde je X podskup atributa relacije i A neki atribut te relacije vazi bar jedno: 
+X je natkljuc ili A je deo nekog kljuca
+UKLONITI ZAVISNOSTI SVIH NE-KLJUC ATRIBUTA OD DRUGIH NE-KLJUC ATRIBUTA (UKLONITI TRANZITIVNOST)
+SVAKI NE-KLJUC ATRIBUT TREBA DA ZAVISI SAMO OD CELOG KLJUCA I NICEG DRUGOG
+
+BCNF - za svaku FZ X->A gde je X podskup atributa relacije i A neki atribut te relacije vazi X je natkljuc
+SVAKI! ATRIBUT TREBA DA ZAVISI SAMO OD CELOG KLJUCA I NICEG DRUGOG
+cheat: AB->C; C->B uvek dovodi do gubitka zavisnosti

@@ -1,0 +1,22 @@
+Okidaci:
+Prevljenje okidaca za tabele:
+CREATE [OR REPLACE] TRIGGER naziv_trigera
+BEFORE/AFTER INSERT/DELETE/UPDATE/TRUNCATE ON naziv_tabele
+FOR EACH ROW
+EXECUTE FUNCTION naziv_funkcije()
+
+Pravljenje okidaca za pogled:
+CREATE TRIGGER naziv_trigera
+INSTEAD OF INSERT/DELETE/UPDATE ON naziv_pogleda
+FOR EACH ROW
+EXECUTE FUNCTION naziv_funkcije()
+
+Pravljenje pogleda:
+CREATE VIEW naziv_pogleda AS sql_upit
+
+Pravljenje funkcije:
+CREATE OR REPLACE FUNCTION naziv_funkcije() RETURNS TRIGGER AS $$
+BEGIN 
+telo_funkcije
+END;
+$$ LANGUAGE plpgsql;
