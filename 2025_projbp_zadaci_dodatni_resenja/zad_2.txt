@@ -1,0 +1,62 @@
+R(id_kupca, id_dostavljaca, reg_broj_vozila, datum_porudzbine, vreme_porudzbine, id_porudzbine, tezina_paketa, iznos, tip_isporuke)
+
+1) id_porudzbine -> id_dostavljaca
+2) id_dostavljaca -> reg_broj_vozila
+3) id_dostavljaca, id_kupca, datum_porudzbine, vreme_porudzbine -> tezina_paketa, iznos, id_porudzbine
+4) reg_broj_vozila -> tip_isporuke
+
+Sigurno deo KK: id_kupca, datum_porudzbine, vreme_porudzbine
+Sigurno nije deo KK: tezina_paketa, iznos, tip_isporuke
+
+{id_kupca, datum_porudzbine, vreme_porudzbine}+ = {id_kupca, datum_porudzbine, vreme_porudzbine}
+
+{id_kupca, datum_porudzbine, vreme_porudzbine, id_porudzbine}+ = R
+{id_kupca, datum_porudzbine, vreme_porudzbine, id_dostavljaca}+ = R
+
+KK1: {id_dostavljaca, id_kupca, datum_porudzbine, vreme_porudzbine}
+KK2: {id_porudzbine, id_kupca, datum_porudzbine, vreme_porudzbine}
+
+-----------------------------------------
+
+2) Narusava 2NF. Medjutim, dekompozicijom bi izgubili 4). Zbog toga cemo prvo dekomponovati po 4).
+
+R1(reg_broj_vozila, tip_isporuke)
+
+4) reg_broj_vozila -> tip_isporuke
+
+KK: {reg_broj_vozila}
+
+R2(id_kupca, id_dostavljaca, reg_broj_vozila, datum_porudzbine, vreme_porudzbine, id_porudzbine, tezina_paketa, iznos)
+
+1) id_porudzbine -> id_dostavljaca
+2) id_dostavljaca -> reg_broj_vozila
+3) id_dostavljaca, id_kupca, datum_porudzbine, vreme_porudzbine -> tezina_paketa, iznos, id_porudzbine
+
+KK1: {id_dostavljaca, id_kupca, datum_porudzbine, vreme_porudzbine}
+KK2: {id_porudzbine, id_kupca, datum_porudzbine, vreme_porudzbine}
+
+Sada dekomponujemo R2 po 2):
+
+R1(reg_broj_vozila, tip_isporuke)
+
+4) reg_broj_vozila -> tip_isporuke
+
+KK: {reg_broj_vozila}
+
+R2(id_dostavljaca, reg_broj_vozila)
+
+2) id_dostavljaca -> reg_broj_vozila
+
+KK: {id_dostavljaca}
+
+R3(id_kupca, id_dostavljaca, datum_porudzbine, vreme_porudzbine, id_porudzbine, tezina_paketa, iznos)
+
+1) id_porudzbine -> id_dostavljaca
+3) id_dostavljaca, id_kupca, datum_porudzbine, vreme_porudzbine -> tezina_paketa, iznos, id_porudzbine
+
+KK1: {id_dostavljaca, id_kupca, datum_porudzbine, vreme_porudzbine}
+KK2: {id_porudzbine, id_kupca, datum_porudzbine, vreme_porudzbine}
+
+Relacije R1xR2xR3 su sada u 2NF. Takodje su i u 3NF. Medjutim, ona nije u BCNF zbog 1). Nije moguce normalizovati do BCNF bez gubitka
+FZ: id_dostavljaca, id_kupca, datum_porudzbine, vreme_porudzbine -> id_porudzbine.
+(AB -> C, C -> B)

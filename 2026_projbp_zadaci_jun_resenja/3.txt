@@ -1,0 +1,103 @@
+Polazni skup FZ:
+
+FZ#1: naziv_knjige -> autor
+FZ#2: naziv_knjige -> zanr
+FZ#3: naziv_knjige -> isbn
+FZ#4: autor -> zanr
+FZ#5: naziv_knjige, izdanje -> isbn
+FZ#6: isbn -> naziv_knjige
+FZ#7: isbn -> izdanje
+FZ#8: isbn -> broj_strana
+FZ#9: isbn -> izdavac
+FZ#10: zanr -> autor
+
+a)
+
+Iz polaznog skupa uklanjamo:
+
+FZ#3: naziv_knjige -> isbn
+    Gledamo red 4 i 5. Naziv knjige je "Deca secanja", medjutim imamo dva razlicita ISBN-a (drugo izdanje je u pitanju).
+
+FZ#10: zanr -> autor
+    Gledamo red 3 i 6. Dve knjige iz zanra "Horor" imaju razlicite autore (Brem Stoker i Dzejms Herbert).
+
+Ostale FZ su okej na osnovu datih podataka.
+
+b)
+
+FZ#1: naziv_knjige -> autor, zanr
+FZ#2: autor -> zanr
+FZ#3: naziv_knjige, izdanje -> isbn
+FZ#4: isbn -> naziv_knjige, izdanje, broj_strana, izdavac
+
+Sigurno deo KK: {} (na zalost, ne mozemo garantovati ni za jedan atribut)
+Sigurno nije deo KK: {broj_strana, izdavac}
+
+{naziv_knjige}+ = {naziv_knjige, autor, zanr}
+{autor}+ = {autor, zanr}
+...
+{isbn}+ = {isbn, naziv_knjige, izdanje, broj_strana, izdavac, autor, zanr} = R (Ovo je jedan kandidat za kljuc!)
+...
+{naziv_knjige, izdanje}+ = {naziv_knjige, izdanje, isbn, broj_strana, izdavac, autor, zanr} = R (Drugi kandidat za kljuc)
+...
+
+Kandidati za kljuc:
+
+KK#1 = {isbn}
+KK#2 = {naziv_knjige, izdanje}
+
+*** Vazna napomena o uslovu minimalnosti kandidata za kljuc ***
+
+Uslov minimalnosti nalaze da ne smemo imati neki atribut koji se moze izbaciti iz kandidata,
+a da pritom uslov jedinstvenosti nastavi da vazi. Ovo znaci da mozemo imati i kandidate razlicitih
+kardinalnosti, pri cemu oni nisu u medjusobnoj relaciji podskupa.
+
+Prema dobijenim kandidatima, FZ#1 (naziv_knjige -> autor, zanr) narusava 2NF - naziv_knjige je podskup
+od KK#2, a autor i zanr su nekljucni atributi. Vrsimo dekompoziciju po FZ#1:
+
+R1(naziv_knjige, autor, zanr)
+
+FZ#1: naziv_knjige -> autor, zanr
+FZ#2: autor -> zanr
+
+KK: {naziv_knjige}
+
+R2(naziv_knjige, izdanje, isbn, broj_strana, izdavac)
+
+FZ#3: naziv_knjige, izdanje -> isbn
+FZ#4: isbn -> naziv_knjige, izdanje, broj_strana, izdavac
+
+KK#1: {naziv_knjige, izdanje}
+KK#2: {isbn}
+
+R1 x R2 je sada u 2NF. Medjutim, FZ#2 (autor -> zanr) narusava 3NF U R1 (autor nije natkljuc, zanr nije kljucni atribut).
+Vrsimo dekompoziciju po FZ#2:
+
+R1.1(naziv_knjige, autor)
+
+FZ#1: naziv_knjige -> autor
+
+KK: {naziv_knjige}
+
+R1.2(autor, zanr)
+
+FZ#2: autor -> zanr
+
+KK: {autor}
+
+R2(naziv_knjige, izdanje, isbn, broj_strana, izdavac)
+
+FZ#3: naziv_knjige, izdanje -> isbn
+FZ#4: isbn -> naziv_knjige, izdanje, broj_strana, izdavac
+
+KK#1: {naziv_knjige, izdanje}
+KK#2: {isbn}
+
+R1.1 x R1.2 x R2 je sada u 3NF. Ipak, mozda izgleda kao da smo upravo izgubili FZ naziv_knjige -> zanr...
+Ona zapravo nije izgubljena! Prirodnim spajanjem R1.1 i R1.2 i na osnovu zakona tranzitivnosti, iz FZ#1 i
+FZ#2 mozemo rekonstruisati naizgled "izgubljenu" FZ naziv_knjige -> zanr.
+
+c)
+
+R1.1 x R1.2 x R2 su vec u BKNF. Iako su zavisnosti u R2 ciklicne (A,B -> C, C -> B), one prave problem tek ako
+one zapravo narusavaju BKNF (sto ovde nije slucaj, jer leve strane odgovaraju kandidatima za kljuc).

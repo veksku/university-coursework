@@ -1,0 +1,27 @@
+Pacijent(*JMBG, ime, prezime, adresa, br. telefona)
+
+Bolnica(*ID, adresa, br. telefona)
+
+Lekar(*ID, ime, prezime, mejl)
+
+Pregled(*JMBG pacijenta, *ID bolnice, *ID lekara, datum, vreme, opis stanja)
+    Pregled[JMBG pacijenta] <= Pacijent[JMBG]
+    Pregled[ID bolnice] <= Bolnica[ID]
+    Pregled[ID lekara] <= Lekar[ID]
+
+Odeljenje(*ID bolnice, *naziv, broj zaposlenih)
+    Odeljenje[ID bolnice] <= Bolnica[ID]
+
+Zamena(*ID zamenjenog, ID zamene)
+    Zamena[ID zamenjenog] <= Lekar[ID]
+    Zamena[ID zamene] <= Lekar[ID]
+
+Specijalista(*ID, specijalizacija, ID bolnice, naziv odeljenja, datum zaposlenja)
+    Specijalista[ID] <= Lekar[ID]
+    Specijalista[ID bolnice, naziv odeljenja] <= Odeljenje[ID bolnice, naziv]
+
+Stazista(*ID, pocetak staziranja, ID nadredjenog)
+    Stazista[ID] <= Lekar[ID]
+    Stazista[ID nadredjenog] <= Specijalista[ID]
+
+GRESKA U a) --- zaboravio sam da dodam datum zaposlenja u vezi "Radi na"
