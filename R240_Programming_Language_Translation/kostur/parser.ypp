@@ -1,0 +1,35 @@
+%{
+#include <cstdio>
+#include <iostream>
+#include <cstdlib>
+#include <string>
+//#include <map>
+
+#define YYDEBUG 1
+
+using namespace std;
+
+	int yylex();
+
+	void yyerror(string s){
+		cerr << s << endl;
+		exit(EXIT_FAILURE);
+	}
+
+//	map<string, double> tablica_simbola;
+
+%}
+
+/*%union {
+	double d;
+	string *s; //bizon ne moze da prima klasne tipove, pa saljemo pokazivac na string
+}*/
+
+%%
+%%
+
+int main(){
+	//yydebug = 1;
+	yyparse();
+	return 0;
+}

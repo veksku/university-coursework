@@ -1,0 +1,12 @@
+razlomak x;
+razlomak y = [10, 1];
+razlomak z= [-5, 2];
+stampaj x;
+stampaj x y;
+
+x + (y - [3, 2] * z)^6;
+razlomak w = -y / ~(z+[2,1] *y);
+stampaj -w*2;
+
+proveri x > y;
+proveri x+(y -[3,1] * z) ^ 2 <= -y / (z + [2,1] * y) ^2;

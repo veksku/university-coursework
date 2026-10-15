@@ -1,0 +1,168 @@
+%{
+
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <string>
+#include <map>
+
+using namespace std;
+
+#define YYDEBUG 1
+#include "uglovi.hpp"
+
+extern int yylex();
+
+void yyerror(string s){
+	cerr<<"Sintaksna greska: "<<s<<endl;
+	exit(EXIT_FAILURE);
+}
+
+map<string, Ugao*> promenljive;
+
+void deinicijalizuj(){
+	for (auto it = promenljive.begin(); it != promenljive.end(); it++)
+		delete it->second;
+}
+
+%}
+
+%union{
+	int v;
+	string* ime;
+	Ugao* ug;
+}
+
+%left '='
+%left '+' '-'
+%left '*'
+
+%token PRINT_T KOM_T SUP_T   
+%token<v> BROJ
+%token<ime> PROMENLJIVA LISTA
+
+%type<ug> izraz elementi lista_el ugao suplementni komplementni
+
+%start program
+
+%%
+
+program: program naredba ';' {}
+	| naredba ';' {}
+	;
+	
+naredba: PRINT_T '(' izraz ')' { cout<<(*$3)<<endl; delete $3; }
+	| PRINT_T '(' LISTA ')' {
+		auto it = promenljive.find(*$3);
+		if (it == promenljive.end()) {
+			yyerror("Promenljiva nije definisana");
+		}
+		cout<<promenljive[*$3][0]<<endl;
+		delete $3;
+	}
+	| PROMENLJIVA '=' izraz {
+		auto it = promenljive.find(*$1);
+		if (it != promenljive.end()) {
+			yyerror("Promenljiva je vec definisana");
+		}
+
+		promenljive[*$1] = $3;
+		delete $1;
+	}
+	| LISTA '=' lista_el {
+		auto it = promenljive.find(*$1);
+		if (it != promenljive.end()) {
+			yyerror("Promenljiva je vec definisana");
+		}
+	
+		promenljive[*$1] = $3;
+		delete $1;
+	}	
+	| izraz { }
+	;
+
+lista_el: '[' elementi ']' { $$ = $2; }
+	;
+
+elementi: elementi ',' izraz {
+		$1->push_back(*$3);
+		$$ = $1;
+		delete $3;
+	}
+		| izraz {
+		$$ = new Ugao(*$1);
+		delete $1;
+	}
+	;
+
+izraz: izraz '+' izraz { $$ = *$1 + *$3; delete $1; delete $3; }
+	| izraz '-' izraz { $$ = *$1 - *$3; delete $1; delete $3; }
+	| BROJ '*' izraz {
+		$$ = new Ugao();
+	
+		$$->set_stepen($1*$3->get_stepen());
+		$$->set_minut($1*$3->get_minut());
+		$$->set_sekund($1*$3->get_sekund());
+	
+		delete $3;
+	}
+	| izraz '*' BROJ {
+		$$ = new Ugao();
+	
+		$$->set_stepen($3*$1->get_stepen());
+		$$->set_minut($3*$1->get_minut());
+		$$->set_sekund($3*$1->get_sekund());
+	
+		delete $1;
+	}
+	| '(' izraz ')' { $$ = $2; }
+	| ugao { $$ = new Ugao(*$1); delete $1;}
+	| PROMENLJIVA {
+		auto it = promenljive.find(*$1);
+		if (it == promenljive.end()){
+			yyerror("Promenljiva nije definisana");
+		}
+						
+		$$ = new Ugao(*(it->second));
+		delete $1;
+	}
+	| komplementni { $$ = new Ugao(*$1); delete $1; }
+	| suplementni { $$ = new Ugao(*$1); delete $1; }
+	;
+
+komplementni:	KOM_T '(' LISTA ')'{
+		/*auto it = promenljive.find(*$3);
+		if (it == promenljive.end()){
+			yyerror("Promenljiva nije definisana");
+		}
+		$$ = new Ugao(*$3, 's');
+		delete $3; */
+	}
+	| KOM_T '(' izraz ')' { $$ = new Ugao(*$3, 'k'); delete $3; }
+	;
+	
+suplementni: SUP_T '(' LISTA ')'{
+		/*auto it = promenljive.find(*$3);
+		if (it == promenljive.end()){
+			yyerror("Promenljiva nije definisana");
+		}
+		$$ = new Ugao(*$3, s);
+		delete $3; */
+	}
+	| SUP_T '(' izraz ')' { $$ = new Ugao(*$3, 's'); delete $3; }
+	;
+
+ugao: '<' BROJ ',' BROJ ',' BROJ '>' { $$ = new Ugao($2, $4, $6); }
+	;
+	
+%%
+
+int main(){
+	yydebug = 1;
+	if(yyparse()==0)
+		cout<<"Sve ok"<<endl;
+	else
+		cout<<"Sintaksna greska"<<endl;
+	deinicijalizuj();
+	exit(EXIT_SUCCESS);
+}

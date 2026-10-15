@@ -1,0 +1,100 @@
+#!/usr/bin/python3
+
+import sys, re
+
+if len(sys.argv) != 2:
+	exit("Pravilno pozivanje programa je: " + sys.argv[0] + " ime datoteke")
+	
+try:
+	f = open(sys.argv[1], 'r')
+	content = f.read()
+	f.close()
+except IOError:
+	exit("Neuspelo citanje datoteke " + sys.argv[1])
+
+reg_exp =  r'\s*azbuka\s*:\s*(?P<azbuka>([a-zA-Z]+\s*)+)' #grupa 1 = azbuka
+reg_exp += r'(#.*)?'
+reg_exp += r'\s*stanja\s*:\s*(?P<stanja>([0-9]+\s*)+)' #grupa 2 = stanja 
+reg_exp += r'(#.*)?'
+reg_exp += r'\s*pocetna\s*:\s*(?P<poc_stanja>([0-9]+\s*)+)' #grupa 3 = pocetna stanja
+reg_exp += r'(#.*)?'
+reg_exp += r'\s*zavrsna\s*:\s*(?P<zav_stanja>([0-9]+\s*)+)' #grupa 4 = zavrsna stanja
+reg_exp += r'(#.*)?'
+reg_exp += r'\s*prelazi\s*:\s*(?P<prelazi>([0-9]+\s+[a-zA-Z]+\s+[0-9]+\s*;\s*)*([0-9]+\s+[a-zA-Z]+\s+[0-9]+\s*))' #grupa 5 = prelazi
+reg_exp += r'(#.*)?'
+
+if re.match(reg_exp, content) is None:
+	exit("Neispravan automat.")
+pattern = re.compile(reg_exp)
+
+for m in pattern.finditer(content):
+	azbuka = m.group('azbuka').strip()
+	stanja = m.group('stanja').strip()
+	poc_stanja = m.group('poc_stanja').strip()
+	zav_stanja = m.group('zav_stanja').strip()
+	prelazi = m.group('prelazi').strip()
+	print(azbuka)
+	print(stanja)
+	print(poc_stanja)
+	print(zav_stanja)
+	print(prelazi)
+
+sva_slova = []
+for slovo in azbuka.split(' '):
+	sva_slova.append(slovo)
+sva_stanja = []
+for stanje in stanja.split(' '):
+	sva_stanja.append(stanje)
+pocetna_stanja = []
+for stanje in poc_stanja.split(' '):
+	pocetna_stanja.append(stanje)
+zavrsna_stanja = []
+for stanje in zav_stanja.split(' '):
+	zavrsna_stanja.append(stanje)
+
+for stanje in pocetna_stanja:
+	if (stanje not in sva_stanja):
+		exit("Neispravan automat.")
+		
+for stanje in zavrsna_stanja:
+	if (stanje not in sva_stanja):
+		exit("Neispravan automat.")
+
+if len(poc_stanja) != 1:
+	exit("Automat nije DKA.")
+
+svi_prelazi = {}
+
+for stanje in sva_stanja:
+	svi_prelazi[stanje] = {}
+
+for prelaz in prelazi.split(';'):
+	x = prelaz.split()
+	prvi = x[0]
+	drugi = x[1]
+	treci = x[2]
+	if x[0] not in sva_stanja or x[2] not in sva_stanja or x[1] not in sva_slova:
+		exit("Neispravan automat.")
+	elif drugi in svi_prelazi[prvi]:
+		exit("Automat nije DKA.")
+	else:
+		svi_prelazi[prvi][drugi] = treci
+		
+if 'eps' in prelazi:
+	exit("Automat nije DKA")
+
+
+print("Ispravno zadat DKA.")
+rec = input("Unesi rec za proveru: ")
+
+trenutno_stanje = pocetna_stanja[0]
+
+for karakter in rec:
+	if karakter not in svi_prelazi[trenutno_stanje].keys():
+		exit("Rec ne pripada jeziku.")
+	trenutno_stanje = svi_prelazi[trenutno_stanje][karakter]
+
+if trenutno_stanje in zavrsna_stanja:
+	print("Rec pripada jeziku.")
+else:
+	print("Rec ne pripada jeziku.")

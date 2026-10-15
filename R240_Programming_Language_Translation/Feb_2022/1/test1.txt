@@ -1,0 +1,6 @@
+azbuka: a b c
+#babababa
+stanja: 0 1 2 3
+pocetna: 0
+zavrsna: 2 3
+prelazi: 0 a 1; 0 c 2; 1 b 3; 2 a 3; 3 a 3; 3 b 3; 3 c 3

@@ -1,0 +1,80 @@
+%{
+#include <cstdlib>
+#include <iostream>
+#include <string>
+#include <map>
+
+#define YYDEBUG 1
+
+using namespace std;
+
+	int yylex();
+	
+	void yyerror(string s){
+		cerr << s << endl;
+		exit(EXIT_FAILURE);
+	}
+	
+	map<string, string> tablica_simbola;
+%}
+
+%union{
+	bool b;
+	double d;
+	string* s;
+}
+
+%token RAZLOMAK ID NUM STAMPAJ PROVERI UMINUS
+%token MANJEJEDNAKO VECEJEDNAKO DVOJEDNAKO RAZLICITO
+
+%left '-' '+'
+%left '*' '/' '^' 
+%right UMINUS '~'
+
+%type<b> poredjenje
+%type<d> izraz
+
+%%
+program: program naredba {}
+| naredba  {}
+;
+
+naredba: RAZLOMAK ID ';' {}
+| STAMPAJ niz ';' {}
+| izraz ';' {}
+| RAZLOMAK ID '=' izraz ';' {}
+| PROVERI poredjenje ';' {}
+;
+
+niz: niz ID {}
+| izraz {}
+;
+
+izraz: izraz '+' izraz {}
+| izraz '-' izraz {}
+| izraz '*' izraz {}
+| izraz '/' izraz {}
+| izraz '^' izraz {}
+| '(' izraz ')' {}
+| '~' izraz {}
+| '-' izraz %prec UMINUS {}
+| ID {}
+| '[' NUM ',' NUM ']' {}
+| NUM {}
+;
+
+poredjenje: izraz '>' izraz { }
+| izraz '<' izraz { }
+| izraz MANJEJEDNAKO izraz { }
+| izraz VECEJEDNAKO izraz { }
+| izraz DVOJEDNAKO izraz { }
+| izraz RAZLICITO izraz { }
+;
+
+%%
+
+int main(){
+	//yydebug = 1;
+	yyparse();
+	return 0;
+}

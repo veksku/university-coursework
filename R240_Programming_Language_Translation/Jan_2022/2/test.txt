@@ -1,0 +1,21 @@
+broj x;
+broj y = 10;
+broj z = -2.5;
+stampaj x;
+
+x+(y -3*z)^(z%10);
+broj w = -y // (z + 2*y) ^(1/2);
+stampaj -w*2;
+
+x > y;
+x+(y -3*z) ^(z%10) <= -y // (z+ 2*y) ^(1/2);
+
+tekst poruka = "Broj je paran";
+ako je x % 2 == 0:
+blok
+	stampaj poruka;
+kraj_bloka
+inace:
+blok
+	stampaj "Broj je neparan";
+kraj_bloka

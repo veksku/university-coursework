@@ -1,0 +1,5 @@
+razlomak x;
+razlomak y = [10, 1];
+razlomak z = [-5, 2];
+stampaj x;
+stampaj z y;

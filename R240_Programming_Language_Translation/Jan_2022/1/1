@@ -1,0 +1,119 @@
+#!/usr/bin/python3
+
+import sys
+import re
+
+if len(sys.argv) < 2 or len(sys.argv) > 3:
+	exit("Koriscenje skripta je: " + sys.argv[0] + " ime_opcije putanja_do_datoteke")
+
+if len(sys.argv) == 3:
+	if sys.argv[1] != "-p" and sys.argv[1] != "-i":
+		exit("Neispravna opcija, ispravne opcije su '-p' i '-i'")
+
+if len(sys.argv) == 2:
+	if re.search('^.+\.csv$', sys.argv[1], re.I) is None:
+		exit(sys.argv[1] + " nije csv fajl")
+else:
+	if re.search('^.+\.csv$', sys.argv[2], re.I) is None:
+		exit(sys.argv[2] + " nije csv fajl")
+
+try:
+	if len(sys.argv) == 2:
+		f = open(sys.argv[1], 'r')
+	else:
+		f = open(sys.argv[2], 'r')
+	content = f.read()
+	f.close()
+except IOError:
+	if len(sys.argv) == 2:
+		exit("Problem pri citanju fajla " + sys.argv[1])
+	else:
+		exit("Problem pri citanju fajla " + sys.argv[2])
+
+reg_exp  = r'\s*[A-Z0-9]{10}\s*;' #maticni broj
+reg_exp += r'\s*([A-Z][a-z]* ([A-Z][a-z]* )?[A-Z][a-z]*)\s*;' #puno ime i prezime = grupa 1, srednje ime grupa 2
+reg_exp += r'\s*(M|Z)\s*;' #pol = grupa 3
+reg_exp += r'\s*o(\d+)n(\d+)nap(\d+)\s*;' #opravdani = grupa 4, neop = 5, napomene = 6
+reg_exp += r'\s*(\d|N)\s*,\s*(\d|N)\s*,\s*(\d|N)\s*,\s*(\d|N)\s*,\s*(\d|N)\s*,\s*(\d|N)\s*,\s*(\d|N)\s*,\s*(\d|N)\s*,\s*(\d|N)\s*,\s*(\d|N)\s*'
+#ocene = grupa 7 - 16
+
+pattern = re.compile(reg_exp)
+
+if len(sys.argv) == 3 and sys.argv[1] == "-p":
+	
+	prosek = {}
+	for m in pattern.finditer(content):
+		zbir_ocena = 0
+		i=0
+		neocenjen = 0
+		br_jedinica = 0
+		while i<=9:
+			tekst = m.group(7+i)
+			if tekst == "N":
+				neocenjen = 1
+			elif tekst == "1":
+				br_jedinica = 1
+			else:
+				ocena = int(tekst)
+				zbir_ocena += ocena
+			i += 1
+		if neocenjen:
+			prosek[m.group(1)] = "Neocenjen"
+		elif br_jedinica:
+			prosek[m.group(1)] = "Nedovoljan"
+		else:
+			prosek[m.group(1)] = zbir_ocena/10
+elif len(sys.argv) == 3 and sys.argv[1] == "-i":
+	
+	izostanci = {}
+	ukupno_opravdanih = 0
+	ukupno_neopravdanih = 0
+	ukupno_opomena = 0
+	broj_ucenika = 0
+	for m in pattern.finditer(content):
+		
+		lista = []
+		opravdani = int(m.group(4))
+		neopravdani = int(m.group(5))
+		opomene = int(m.group(6))
+		
+		lista.append(opravdani)
+		lista.append(neopravdani)
+		lista.append(opomene)
+		
+		izostanci[m.group(1)] = lista
+		print(m.group(1) + " ima sledece izostanke: ", izostanci[m.group(1)])
+		
+		ukupno_opravdanih += opravdani
+		ukupno_neopravdanih += neopravdani
+		ukupno_opomena += opomene
+		broj_ucenika += 1
+	
+	print("Ukupno opravdanih:", ukupno_opravdanih,  "Ukupno neopravdanih:", ukupno_neopravdanih)
+	print("Prosecno opravdanih:", ukupno_opravdanih/broj_ucenika,  "Prosecno neopravdanih:", ukupno_neopravdanih/broj_ucenika)
+elif len(sys.argv) == 2:
+	prosek = {}
+	for m in pattern.finditer(content):
+		zbir_ocena = 0
+		i=0
+		neocenjen = 0
+		br_jedinica = 0
+		while i<=9:
+			tekst = m.group(7+i)
+			if tekst == "N":
+				neocenjen = 1
+			elif tekst == "1":
+				br_jedinica = 1
+			else:
+				ocena = int(tekst)
+				zbir_ocena += ocena
+			i += 1
+		if neocenjen:
+			prosek[m.group(1)] = "Neocenjen"
+		elif br_jedinica:
+			prosek[m.group(1)] = "Nedovoljan"
+		else:
+			prosek[m.group(1)] = zbir_ocena/10
+	
+	for m in pattern.finditer(content):
+		print(m.group(1) + " ", prosek[m.group(1)], ", " + m.group(4) + "o, " + m.group(5) + "n, " + m.group(6) + "nap")

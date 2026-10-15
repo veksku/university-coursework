@@ -1,0 +1,50 @@
+%{
+
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <string>
+#include <map>
+
+using namespace std;
+
+extern int yylex();
+
+void yyerror(string s){
+	cerr<<"Sintaksna greska: "<<s<<endl;
+	exit(EXIT_FAILURE);
+}
+
+//map<string, klasa*> promenljive;
+
+void deinicijalizuj()
+	for(auto it = promenljive.begin(); it != promenljive.end(); it++)
+		delete it->second;
+
+%}
+
+%union{
+	int v;
+	string* ime;
+}
+
+%token
+
+%start program
+
+%%
+
+program: program naredba ';' {}
+	| naredba ';' {}
+	;
+	
+%%
+
+int main(){
+	if(yyparse()==0)
+		cout<<"Sve ok"<<endl;
+	else
+		cout<<"Sintaksna greska"<<endl;
+	deinicijalizuj();	
+	exit(EXIT_SUCCESS);
+}

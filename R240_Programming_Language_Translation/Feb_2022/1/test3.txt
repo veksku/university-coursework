@@ -1,0 +1,4 @@
+azbuka: a b c
+stanja: 0 1 2 3
+pocetna: 0
+prelazi: 0 a 1

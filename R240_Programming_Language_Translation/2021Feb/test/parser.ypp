@@ -1,0 +1,100 @@
+%{
+
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+//#define YYDEBUG 1
+
+#include "vektori.hpp"
+
+extern int yylex();
+
+void yyerror(string s){
+	cout<<"Sintaksna greska"<<endl;
+	exit(EXIT_FAILURE);
+}
+
+%}
+
+%union{
+	int v;
+	string* ime;
+	Vektor* vek;
+}
+
+%left '-' '+'
+%left '*'
+%right UMINUS
+
+%token DEF_T PRINT_T DODELA REFX_T REFY_T SIM_T ANGLE_T ROT_T LIST_T  
+%token<v> BROJ
+%token<ime> ID
+
+%type<vek> izraz definicija
+%type<vector<vek>> lista elementi
+
+%start program
+
+%%
+
+program: naredba '\n' program { }
+	| naredba '\n' { }
+	| '\n' { }
+	;
+
+naredba: ID DODELA definicija { }
+	| PRINT_T '(' izraz ')' { }
+	| PRINT_T '(' definicija ')' { }
+	|	ID DODELA izraz { }
+	| ID DODELA LIST_T '(' lista ')' { }
+	| '\n' { }
+	;
+	
+definicija: DEF_T '(' izraz ',' izraz ')' { }
+	;
+	
+izraz: izraz '+' izraz { }
+	| izraz '-' izraz { }
+	| '-' izraz %prec UMINUS { }
+	| '(' izraz ')' { }
+	| BROJ '*' izraz { }
+	|	izraz '*' BROJ { }
+	| REFX_T '(' izraz ')' { }
+	| REFY_T '(' izraz ')' { }
+	| SIM_T '(' izraz ')' { }
+	| ROT_T '(' izraz ',' ugao ')' { }
+	| ID { }
+	| '<' BROJ ',' BROJ '>' {}
+	;
+
+duzina: '|' izraz '|' { }
+	;
+	
+ugao: ANGLE_T '(' izraz ',' izraz ')' { }
+	;
+	
+lista: elementi { }
+	;
+	
+elementi: elementi ',' izraz { }
+	| izraz { }
+	;
+	
+%%
+
+int main(){
+	//yydebug = 1;
+	if(yyparse() == 0){
+		cout<<"Sve ok"<<endl;
+	}
+	else{
+		cout<<"Sintaksna greska"<<endl;
+	}
+	//deinicijalizuj();
+	exit(EXIT_SUCCESS);
+}

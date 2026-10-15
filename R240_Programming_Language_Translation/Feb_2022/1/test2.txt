@@ -1,0 +1,5 @@
+azbuka: a b c
+stanja: 0 1 2 3
+pocetna: 0
+zavrsna: 2 3
+prelazi: 0 eps 1; 0 c 4

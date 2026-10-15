@@ -1,0 +1,136 @@
+%{
+#include <cstdio>
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include <vector>
+#include <map>
+#include "matrica.hpp"
+
+using namespace std;
+
+#define YYDEBUG 1
+
+	int yylex();
+
+	void yyerror(string s){
+		cerr << s << endl;
+		exit(EXIT_FAILURE);
+	}
+	
+	map<string, Matrica> tablica_simbola;
+%}
+
+%union {
+	double d;
+	vector<double> *v;
+	Matrica *m;
+	string *s;
+}
+
+%token <s> id_token
+%token <d> num_token
+%token pm_token
+
+%type <v> Red
+%type <m> NizRedova M E
+
+%left '+' '-'
+%left pm_token
+%left '*'
+%nonassoc '\''
+
+%%
+
+Program: Program Naredba '\n' {}
+| Naredba '\n' {}
+;
+
+Naredba: id_token '=' E {
+	tablica_simbola[*$1] = *$3;
+	cout << *$1 << " =" << endl << *$3;
+	delete $1;
+	delete $3;
+}
+| id_token '=' E ';' {
+	tablica_simbola[*$1] = *$3;
+	delete $1;
+	delete $3;
+}
+;
+
+E: M {
+	$$ = $1;
+}
+| id_token {
+	map<string, Matrica>::iterator i = tablica_simbola.find(*$1);
+	if(i==tablica_simbola.end())
+		yyerror("Matrica " + *$1 + " nije definisana");
+	$$ = new Matrica(i->second);
+	//$$ = new Matrica(tablica_simbola[*$1]);
+	delete $1;
+}
+| E '+' E {
+	$$ = new Matrica(*$1 + *$3);
+	delete $1;
+	delete $3;
+}
+| E '-' E {
+	$$ = new Matrica(*$1 - *$3);
+	delete $1;
+	delete $3;
+}
+| E '*' E {
+	$$ = new Matrica(*$1 * *$3);
+	delete $1;
+	delete $3;
+}
+| E pm_token E {
+	$$ = new Matrica($1->pm(*$3));
+	delete $1;
+	delete $3;
+}
+| E '\'' {
+	$$ = new Matrica($1->transponovana());
+	delete $1;
+}
+;
+
+M: '[' NizRedova ']' {
+	$$ = $2;
+}
+;
+
+NizRedova: NizRedova ';' Red {
+	$1->dodajRed(*$3);
+	$$ = $1;
+	delete $3;
+}
+| Red {
+	$$ = new Matrica(*$1);
+	delete $1;
+}
+;
+
+Red: Red num_token {
+	$1->push_back($2);
+	$$ = $1;
+}
+| num_token {
+	$$ = new vector<double>();
+	$$->push_back($1);
+}
+;
+%%
+
+int main(){
+	//yydebug = 1;
+	try{
+		yyparse();
+	}
+	catch (const char *s){
+		cerr << s << endl;
+		exit(EXIT_FAILURE);
+	}
+	return 0;
+}

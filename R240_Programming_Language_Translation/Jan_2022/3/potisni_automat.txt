@@ -1,0 +1,5 @@
+broj x;
+broj y = 10;
+broj z = -2.5;
+stampaj x;
+stampaj z y;
