@@ -1,0 +1,24 @@
+void razmeni(int *a, int *b)
+{
+	int pom = *a;
+	*a = *b;
+	*b = pom;
+}
+
+void selection_sort_rev(int *niz, int n)
+{
+	int i, j, indeks_max;
+
+	for(i=0; i<n; i++)
+	{
+		//1. trazenje max
+		indeks_max = i;
+		
+		for(j=i+1; j<n; j++)
+			if (niz[j] > niz[indeks_max])
+				indeks_max = j;
+				
+		//2. zamena
+		razmeni(&niz[i], &niz[indeks_max]);
+	}
+}

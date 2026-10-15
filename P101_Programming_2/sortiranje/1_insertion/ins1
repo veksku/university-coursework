@@ -1,0 +1,20 @@
+void razmeni(int *a, int *b)
+{
+	int pom = *a;
+	*a = *b;
+	*b = pom;
+}
+
+void insertion_sort(int *niz, int n)
+{
+	int i, j;
+
+	for(i=1; i<n; i++)
+	{
+		for(j=i-1; j>=0; j--)
+			if (niz[j] > niz[j+1])
+				razmeni(&niz[j], &niz[j+1]);
+			else
+				break;
+	}
+}
