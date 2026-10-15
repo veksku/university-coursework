@@ -1,0 +1,13 @@
+--Relaciona algebra
+
+(predmet where espb=6)[oznaka, naziv]
+union
+(predmet join ispit where ocena>5 and oznakaroka='feb' and skgodina=2015)[naziv, oznaka]
+
+--Relacioni racun
+
+range of px is predmet
+range of ix is ispit
+px.oznaka, px.naziv
+where px.espb = 6 or exists ix (ix.idpredmeta = px.idpredmeta and ix.ocena > 5
+	and ix.oznakaroka = 'feb' and ix.skgodina=2015))
