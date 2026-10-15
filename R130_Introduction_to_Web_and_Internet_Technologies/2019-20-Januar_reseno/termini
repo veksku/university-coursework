@@ -1,0 +1,8 @@
+{"_id":{"$oid":"5e19e0f4314aa01d34c47693"},"lekar":"Ivan Mitrovic","pacijent":"Jovan Petrovic","termin":{"$date":{"$numberLong":"1579705200000"}}}
+{"_id":{"$oid":"5e19eb13b69ecc2ccc83c030"},"lekar":"Ivan Mitrovic","pacijent":"Olivera Novakovic","termin":{"$date":{"$numberLong":"1580382000000"}}}
+{"_id":{"$oid":"5e19eb3cb69ecc2ccc83c031"},"lekar":"Jelena Jovanovic","pacijent":"Bojana Anic","termin":{"$date":{"$numberLong":"1579190400000"}}}
+{"_id":{"$oid":"5e1a1086502a1832e4734454"},"lekar":"Ivan Mitrovic","pacijent":"Gordana Stankovic","termin":{"$date":{"$numberLong":"1579791600000"}}}
+{"_id":{"$oid":"5e1a1fa289860b23d8427822"},"lekar":"Jelena Jovanovic","pacijent":"Isidora Gordic","termin":{"$date":{"$numberLong":"1578988800000"}}}
+{"_id":{"$oid":"5e1a1fd489860b23d8427823"},"lekar":"Jelena Jovanovic","pacijent":"Uros Mitrovic","termin":{"$date":{"$numberLong":"1579856400000"}}}
+{"_id":{"$oid":"5e1a225d89860b23d8427824"},"lekar":"Jelena Jovanovic","pacijent":"Vladimir Jankovic","termin":{"$date":{"$numberLong":"1580551200000"}}}
+{"_id":{"$oid":"5e1a387789860b23d8427825"},"lekar":"Jelena Jovanovic","pacijent":"Goran Nikolic","termin":{"$date":{"$numberLong":"1580281200000"}}}

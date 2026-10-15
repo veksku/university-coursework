@@ -1,0 +1,4 @@
+{"_id":{"$oid":"5e2c8c00f40e180c20e4a4e6"},"vremeTrajanja":{"$numberInt":"3"},"naziv":"Implementacija MVC arhitekture u C++ programima","brojUlaznica":{"$numberInt":"18"},"datum":{"$date":{"$numberLong":"1581724800000"}}}
+{"_id":{"$oid":"5e2c8c20f40e180c20e4a4e7"},"vremeTrajanja":{"$numberInt":"4"},"naziv":"Angular vs React vs Vue - koji je radni okvir najbolji?","brojUlaznica":{"$numberInt":"42"},"datum":{"$date":{"$numberLong":"1586908800000"}}}
+{"_id":{"$oid":"5e2c8c3af40e180c20e4a4e8"},"vremeTrajanja":{"$numberInt":"1"},"naziv":"JavaScript 101","brojUlaznica":{"$numberInt":"12"},"datum":{"$date":{"$numberLong":"1591833600000"}}}
+{"_id":{"$oid":"5e2c8c54f40e180c20e4a4e9"},"vremeTrajanja":{"$numberInt":"2"},"naziv":"Implementacija transakcija u nerelacionim bazama podataka","brojUlaznica":{"$numberInt":"25"},"datum":{"$date":{"$numberLong":"1580169600000"}}}

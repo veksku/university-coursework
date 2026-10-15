@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="data:,">
+    <title>Zakazani pregledi</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/pregledi.css" />
+</head>
+
+<body>
+    <header>
+        <!-- Odgovarajući naslov -->
+    </header>
+
+    <main>
+        <div>
+            <!-- Tabela sa klasom "pregled" -->
+            <table class="pregled">
+                <tr>
+                    <th>Lekar</th>
+                    <th>Pacijent</th>
+                    <th>Termin</th>
+                    <th></th>
+                </tr>
+                <% for(let pregled of pregledi) { %>
+                    <% let terminNov = pregled.termin.getDate() + "." + (pregled.termin.getMonth() + 1) + "." + pregled.termin.getFullYear() + "." + " u " + pregled.termin.getHours() + "h"; %>
+                    <tr>
+                        <td><%= pregled.lekar %></td>
+                        <td><%= pregled.pacijent %></td>
+                        <td><%= terminNov %></td>
+                        <td>
+                            <form id="otkazi" action="/pregledi/otkazi" method="POST">
+                                <input type="hidden" name="id" value="<%= pregled._id %>">
+                                <input type="submit" value="Otkazi pregled">
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
+            </table>
+            <button id="dugme">Zakazi novi pregled</button>
+        </div>
+            
+    
+        <div>
+            <form id="zakazi" action="/pregledi/zakazi" method="POST">
+                <div>
+                    <label for="lekar">Ime lekara:</label>
+                    <input type="text" name="lekar" id="lekar">
+                </div>
+                <div>
+                    <label for="pacijent">Ime pacijenta:</label>
+                    <input type="text" name="pacijent" id="pacijent">
+                </div>
+                <div>
+                    <label for="datum">Datum pregleda:</label>
+                    <input type="date" name="datum" id="datum">
+                </div>
+                <div>
+                    <label for="vreme">Vreme pregleda:</label>
+                    <input type="number" name="vreme" id="vreme">
+                </div>
+                <input type="submit" value="Posalji">
+            </form>
+        </div>
+    </main>
+
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/zakaziPregled.js"></script>
+</body>
+</html>

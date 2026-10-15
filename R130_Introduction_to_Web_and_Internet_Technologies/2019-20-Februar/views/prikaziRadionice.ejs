@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="data:,">
+    <title>Radionice o programiranju</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/prikaziRadionice.css" />
+</head>
+
+<body class="container">
+    <header>
+        <h1 class="display-3 text-center">Radionice o programiranju</h1>
+    </header>
+    <main>
+        <section>
+            <div>
+                <h3>Spisak radionica</h3>
+                <!-- Grupisuci element sa klasom radionica. -->
+            </div>
+
+            <div>
+                <h3>Organizuj radionicu</h3>
+                <form id="organizuj" action="/organizuj" method="POST">
+                    <div>
+                        <label for="naziv">Naziv radionice:</label>
+                        <input type="text" id="naziv" name="naziv">
+                    </div>
+                    <div>
+                        <label for="broj">Broj ulaznica:</label>
+                        <input type="number" id="broj" name="broj">
+                    </div>
+                    <div>
+                        <label for="datum">Datum odrzavanja:</label>
+                        <input type="date" id="datum" name="datum">
+                    </div>
+                    <div>
+                        <label for="vreme">Vreme trajanja (u satima):</label>
+                        <input type="number" id="vreme" name="vreme">
+                    </div>
+                    <input type="submit" value="Organizuj radionicu">
+                </form>
+            </div>
+        </section>
+
+        <section>
+            <div>
+                <h3>Rezerviši karte za radionicu</h3>
+                <form id="rezervisi" action="/rezervisi" method="POST">
+                    <div>
+                        <label for="naziv_rezervisi">Odaberite naziv radionice:</label>
+                        <select id="naziv_rezervisi" name="naziv">
+                            <!-- Opcije sa nazivima radionica -->
+                        </select>
+                    </div>
+                    <div>
+                        <label for="broj_rezervisi">Odaberite broj karata:</label>
+                        <input type="number" id="broj_rezervisi" name="broj">
+                    </div>
+                    <input type="submit" value="Rezervisi">
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/prikaziRadionice.js"></script>
+</body>
+
+</html>

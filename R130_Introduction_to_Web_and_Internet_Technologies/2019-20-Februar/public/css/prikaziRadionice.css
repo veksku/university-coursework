@@ -1,0 +1,18 @@
+h1 {
+    border-bottom: 5px solid grey;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.radionica {
+    border-top: 2px solid salmon;
+    padding: 10px 0;
+}
+
+.radionica:last-child {
+    border-bottom: 2px solid salmon;
+}
+
+.radionica > h5 {
+    font-style: italic;
+}

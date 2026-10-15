@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Instalira sve pakete iz package.json
+npm install
+# Ukoliko neki od navedenih paketa ima bezbednosni problem,
+# ovo ce ih resiti
+npm audit fix
+
+# Unosi inicijalne podatke u bazu
+mongoimport --db 201920Jan1 --collection pregleds --file termini

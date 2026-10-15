@@ -1,0 +1,15 @@
+.pregled, #zakazi, button {
+    width: 85%;
+    padding: 10px;
+    margin: 50px auto;
+}
+
+td, th {
+    width: 25%;
+    border-bottom: 2px solid darkblue;
+    padding: 5px;
+}
+
+#zakazi {
+    display: none;
+}
