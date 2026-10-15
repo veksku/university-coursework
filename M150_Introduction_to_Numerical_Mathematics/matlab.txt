@@ -1,0 +1,41 @@
+diag(C,x) - ispisuje dijagonalu matrice C, x je opcionalni parametar koji pokazuje koju dijagonalu pise
+diag([x,y,z],vr) - pravi matricu sa x,y,z na glavnoj dijagonali, ostale vrednosti su 0, vr oznacava koju dijagonalu uzimamo
+unique(q) - q niz sa el koji se ponavljaju, vraca rastuci niz sa el. bez ponavljanja
+
+3x^2+5x-4
+p = [3, 0, 5, -4]
+conv(p,q) - mnozi vektore p,q kao da su polinomi
+linspace(a,b,n) - u interval a,b smesti n tacaka na istom rastojanju
+plot(a,b,c,d) - ovaj konkretno skicira 2 grafika, ab i cd
+polyval(P, k) - vrednost polinoma P u tacki k
+polyder(p) - izvod polinoma p(x) po x
+poly(vektor) - pravi polinom od vektora
+@(x) - anonimna funkcija za neku nezavisnu prom; konkretno ovde je x, sluzi za inicijalizaciju funkcija, npr
+f = @(x) exp(x) = e^x
+
+.* - skalarni proizvod?
+
+function i=izvod(x) - ime funkcije
+
+for i=1:n
+	if X(i) >= 0
+		Y=[Y X(i)];
+	end
+end
+
+diff(x,y,z,k) - oduzima redom x-y pa y-z itd.
+all(diff()>0) - svaku pojedinacnu razliku uporedjuje s 0
+disp("text") - ispisuje "text"
+error() - ispisuje poruku i prekida program
+zeros(M,K) - pravi matricu MxK ispunjenu nulama
+integral(f,a,b) - racuna integral od a do b anonimne funkcije f
+I = eye(m) - u I smesta jedinicnu matricu dimenzije mxm
+
+fzero(f,x0) - trazi nulu funkcije blizu tacke x0
+F=sym(f); -konvertujemo funkciju u simbolicku
+F1=diff(F); -izvod simbolicke funkcije
+f1=matlabFunction(F1); -konvertujemo simbolicku funkciju F1 u anonimnu funkciju
+polyint(X); -integracija simbolicke funkcije X
+
+C = cell(n,m) - pravi celiju sa n redova i m kolona i smesta je u C, korisna za cebisevljeve i lezandrove polinome
+celldisp(C) - ispis celije C, jer napisati samo C bez tacke zareza nece ispisati celije C
