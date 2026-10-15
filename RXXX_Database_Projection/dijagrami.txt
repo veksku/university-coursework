@@ -1,0 +1,72 @@
+ER dijagram:
+Entiteti su predstavljeni pravougaonicima njihovi atrubuti su u obliku kruga a PK je podvucen
+
+Odnosi su u obliku romba. Kadrinalnost se definise bas kod tog atributa za koji se opisuje tj. X->Y kardinalnost se stavlja kod X
+
+Slab entitet je uokviren pravougaonik to je entitet koji ne moze da postoji bez nekog entiteta
+
+Specijalizacija je u obliku romba u kome se nalazi S (npr. zaposleni mogu biti Prodavac i Dostavljac pa su oni specijalizacija klase Zaposleni)
+
+Agregacija je oblika romb u pravougaoniku i predstavlja se samo kada: kardinalnost u oba smera vise prema vise (O,N) ili (1,N),
+ukoliko imamo atribute, ukoliko je potrebno da odnos bude u odnosu sa nekim entitetom
+
+Dijagram klasa:
+Klase se predstavljaju pravougaonicima i sastoje se od atributa a PK se oznacava sa <<PK>> naziv_atributa
+
+Kardinalnost - A->B stavljamo na stranu kod B a obelezavamo ih sa (1..1,0..1,0..*,1..*,0..N,1..N)
+
+Asocijacija - predstavlja odnos, obicna linija koja spaja klase 
+
+Klasa asocijacije- odnos klasa koji sadrzi atribute, predstavljamo ga kao normalnu klasu ali je spajamo sa asocijacijom isprekidanom linijom
+
+Ciklicna veza-klasa ima odnos sa samom sobom
+
+N-arna veza- vise od dve klase imaju odnos pa to predstavljamo rombom i onda spajamo svaku od tih klasa sa tim rombom
+
+Nasledjivanje- strelica ka baznoj klasi
+
+Agregacija- odnos gde objekat jedne klase predstavlja deo druge ali moze da postoji nevezano od te klase, predstavlja se nepopunjenim rombom
+i to kao X<-Y gde je Y deo klase X
+
+Kompozicija- odnos gde objekat jedne klase predstavlja deo druge ali ne moze da postoji nevezano od te klase, 
+predstavlja se popunjenim rombom i to kao X<-Y gde je Y deo klase X
+
+Prevodjenje ER dijagrama:
+
+Specijalizacija-Svi njeni atributi + PK od tog entiteta za kog se radi specijalizacija gde je ujedno on ujedno i PK specijalizacije
+
+Zavisni entitet-isto kao specijalizacija
+
+Agregirani objekat- prvo se prevodi odnos koji sa jedne strane ima kardinalnost (1,1) ako ne postoji onda (0,1) 
+a inace odnos koji je ogranicen sa obe strane odozgo sa N,
+Ako je bar sa jedne strane odnos (1,1) ne pravi se nova relacija vec se ako je relacija X<-Y i kod Y je (1,1) onda Y uzimam PK 
+od X i dodaje ga kao svoj atribut,
+ako je sa jedne strane (0,1) a sa druge nije (1,1) pravi se nova relacija koja ima atribute koje sadrzi plus atribute oba 
+entiteta sa kojima se spaja a PK je PK entiteta kod koga je kardinalnost (0,1),
+ako je kardinalnost sa obe strane N pravi se nova relacija a relaciji se dodaju svi njeni atributi plus unija PK 
+od oba entiteta koji su ujedno PK za taj entitet
+
+Odnosi-isto kao agregirani objekat
+
+Prevodjenje dijagrama klasa:
+
+specijalizacija(nasledjivanje)- postoje tri nacina: prevodi se u novu relaciju i sadrzi sve svoje atribute plus PK nadklase, 
+prevodi se u novu relaciju sadrzi sve svoje atribute plus sve atribute nadklase, ne prevodi se a nadklasa sadrzi sve njihove atribute
+
+Asocijacija- ukoliko je sa bar jedne strane 1..1 ne prevodi se u novu relaciju vec se PK klase uz koju je kardinalnost 1..1 
+dodaje drugoj klasi kao atribut,
+ukoliko je sa jedne strane 0..1 a sa druge nije 1..1 relacija se prevodi, atributi novodobijene relacije su kljucevi klasa koje 
+asocijacija spaja a kao PK se uzima onaj od koje je kardinalnost 0..1,
+ako je relacija vise-vise onda se relacija prevodi a kao atributi se uzimaju oba PK koji su ujedno i PK-ovi relacije
+
+Klasa asocijacije- se ne prevodi vec u novu tabelu vec se njeni atributi dodaju u tabelu vec prevedene asocijacije za koju se vezuje
+
+Ternarna veza- prevodi se u novu relaciju kljucevi klasa koje ucestvuju u njoj postaju njeni atributi, 
+PK se bira sledece: ukoliko su sve gornje granice u vezi 1 biramo koji god za PK, 
+ako imamo 1-1-* onda je PK uz koje * i bilo koji od ostala dva,  
+ako je 1-*-* onda samo one uz koje je zvezda a ako je *-*-* onda sva tri su kljucevi
+
+Agregacija- prevodi se u novu relaciju a kao atribute ima kljuceve klasa koje ucestvuju u agregaciji 
+a kao PK se uzima onaj od klase koja predstavlja deo (ako je X<-Y uzima se PK od Y)
+
+Kompozicija- ne prevodi se u novu relaciju vec ako imamo X<-Y klasi Y se dodaje atribut koji je PK klase X

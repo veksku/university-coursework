@@ -1,0 +1,27 @@
+Klijent(*JMBG, Ime, Prezime)
+
+Ekspozitura(*Sifra, Adresa, Kontakt telefon)
+
+Bankar(*JMBG, Ime, Prezime, Radno vreme, Sifra ekspoziture, Datum pocetka)
+    Bankar[Sifra ekspoziture] <= Ekspozitura[Sifra]
+
+Licni bankar(*JMBG klijenta, JMBG bankara)
+    Licni bankar[JMBG klijenta] <= Klijent[JMBG]
+    Licni bankar[JMBG bankara] <= Bankar[JMBG]
+
+Kartica(*Jedinstveni broj, Datum isteka, Stanje, JMBG klijenta)
+    Kartica[JMBG klijenta] <= Klijent[JMBG]
+
+Bankomat(*Sifra, Stanje, Sifra alternative, Udaljenost alternative)
+    Bankomat[Sifra alternative] <= Bankomat[Sifra]
+
+Bankomat van ekspoziture(*Sifra, Adresa)
+    Bankomat van ekspoziture[Sifra] <= Bankomat[Sifra]
+
+Bankomat u ekspozituri(*Sifra, Sifra ekspoziture)
+    Bankomat u ekspozituri[Sifra] <= Bankomat[Sifra]
+    Bankomat u ekspozituri[Sifra ekspoziture] <= Ekspozitura[Sifra]
+
+Transakcija[*Jedinstveni broj kartice, *Redni broj, Iznos, Valuta, Datum, Sifra bankomata]
+    Transakcija[Jedinstveni broj kartice] <= Kartica[Jedinstveni broj]
+    Transakcija[Sifra bankomata] <= Bankomat[Sifra]
