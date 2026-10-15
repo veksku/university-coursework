@@ -1,0 +1,6 @@
+[requires]
+lib_name/min_version
+
+[generators]
+CMakeDeps
+CMakeToolchain

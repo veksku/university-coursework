@@ -1,0 +1,8 @@
+clang-tidy main.cpp --checks="modernize-*" --fix -- --std=c++17 > log.txt
+modernize-use-nullptr
+modernize-use-auto
+modernize-use-using
+
+run-clang-tidy -checks='modernize-*' -fix ??
+
+clang-format --style=LLVM

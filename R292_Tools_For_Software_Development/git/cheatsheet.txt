@@ -1,0 +1,10 @@
+git init
+git branch [name]
+git add [files]
+git commit -m [comment]
+git branch -a
+git checkout master
+git merge [name] (iz mastera)
+git rebase master (iz druge grane)
+git branch -d [name]
+git log

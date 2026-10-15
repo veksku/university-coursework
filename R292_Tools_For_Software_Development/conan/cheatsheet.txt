@@ -1,0 +1,8 @@
+conan install . --output-folder=build --build=missing --settings=build_type=Debug
+
+u cmake: "find_package(PACKAGE_NAME REQUIRED)" gde je PACKAGE_NAME ime paketa koje se nalazi umesto * kod Find*.cmake fajlova u build-u
+ako nema Find*.cmake fajlova onda mora postojati *Config.cmake ili *-config.cmake
+
+cd build
+cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release
+cmake --build .

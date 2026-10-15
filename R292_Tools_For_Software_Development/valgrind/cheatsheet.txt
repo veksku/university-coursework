@@ -1,0 +1,8 @@
+valgrind --leak-check=full \
+	 --show-leak-kinds=all \
+	 --track-origins=yes \
+	 --log-file=log.txt \
+	   ./program.out
+
+valgrind --tool=callgrind --callgrind-out-file=callgrind.out ./program.out
+kchachegrind callgrind.out

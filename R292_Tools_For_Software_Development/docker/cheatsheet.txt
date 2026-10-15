@@ -1,0 +1,17 @@
+docker build -t [name] .
+docker run --name [example_name] [name]
+
+docker volume create [vol_name]
+docker run -v [vol_name]:/data [name]
+
+
+
+
+
+docker image ls
+docker ps -a
+docker rmi [name] -f
+
+
+docker login --username=[user]
+docker tag [name] [user]/[repo]

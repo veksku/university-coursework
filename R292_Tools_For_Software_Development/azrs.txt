@@ -1,0 +1,79 @@
+2. Šta je indeks (git)?
+-Datoteka za belezenje promena u projektu
+
+3.
+      A---B---C feature
+     /
+D---E---F---G master
+
+Vizuelizovati sledeće:
+
+
+git checkout master, git merge feature
+	A---B---C
+     /		 \
+D---E---F---G-----H 
+
+git checkout feature, git rebase master
+D---E---F---G---A---B---C
+
+git checkout master, git cherry-pick A C
+	A---B---C--
+     /	 \-----\   \
+D---E---F---G---H---I 
+
+4. Objasniti razliku i vezu između git pull i git fetch.
+-Git fetch povlaci sve izmene bez primene dok git pull povlaci izmene i primenjuje (merge-uje) ih.
+
+5. Koja je razlika između komandi git revert i git reset --hard?
+-Git revert invertuje komit ali komit i dalje ostaje vidljiv, git reset ce takodje i obrisati komit.
+
+7. Objasniti display, continue, break gdb komande.
+-Display nam omogucava pracenje vrednosti promenljivih koje odaberemo, continue nastavlja izvrsavanje programa do sledeceg breakpointa, break pravi breakpoint na navedenoj liniji ili funkciji.
+
+8. Navesti primer upotrebe za watchpoint i primer upotrebe za breakpoint.
+-Watchpoint se aktivira kada se vrednost izraza promeni, npr. u algoritmu za max mozemo proveriti svaku novu trenutnu max vrednost. Breakpoint se aktivira kad se dostigne navedena funkcija ili linija, npr. zakljucili smo da imamo bag u main.cpp, stavljamo breakpoint na main.cpp da bi program stao i da bismo mogli da izvrsavamo naredbe korak po korak.
+
+9. Navesti barem tri Valgrind alata i u jednoj rečenici objasniti svaki.
+-Memcheck (proverava memoriju), Helgrind (proverava sinhronizaciju), Callgrind (proverava pozive funkcija)
+
+10. Šta je Godbolt? Navesti neke primene.
+-Alat koji prikazuje nas kod konvertovan u masinski kod. Moze posluziti za razumevanje nekih optimizacija koje se vrse prilikom kompajliranja.
+
+11. Da li je moguće automatski (barem delimično) refaktorisati C++ kod u standardu 03 u C++ kod u standardu 11. Ako može, onda kako?
+-Da, koristeci lintere poput clang-tidy.
+
+12. Koja je razlika između virtuelnih mašina i kontejnera?
+-VM je apstrakcija na fizickom nivou i imaju svoj OS, dok je kontejner apstrakcija na aplikacionom sloju.
+
+13. Koja je razlika između DVCS i CVCS?
+-DVCS omogucava svakom razvijaocu programa da ima lokalni repozitorijum koji je kao neki lokalni server i zbog toga nije neophodan mrezni pristup sve vreme. Kod CVCS postoji jedan jedini "centralni" repo i da bi se on azurirao neophodan je pristup mrezi.
+
+14. Šta su konflikti (git)?
+-Konflikti nastaju kada hocemo da komitujemo fajl koji nismo azurirali - dohvatili smo program i krenuli da ga azuriramo; u medjuvemenu je jos neko dohvatio program, izmenio ga i komitovao; ako mi sad probamo da komitujemo nas program doci ce do konflikta jer git ne moze sam da proceni koje promene treba da sacuva a koje da odbaci ili prelepi.
+
+18. Šta je gdb
+-Alat za posmatranje/debagovanje programa prilikom izvrsavanja. Omogucava posmatranje promenljivih, postavljanje breakpointova, izvrsavanje linija jednu po jednu.
+
+19. Šta je qmake/cmake/Makefile? Šta je izlaz ovog alata?
+-Alat za izgradnju (buildovanje) programa, testiranje i rad sa paketima. Konacni izlaz je izvrsni fajl naseg programa.
+
+20. Šta je Valgrind, a šta Callgrind.
+-Valgrind je alat koji se bavi greskama vezanim za memoriju, Callgrind je alat Valgrinda koji omogucava pracenje pozivaoca funkcija.
+
+21. Navesti jedan primer gde za velike ulaze (milijardu) algoritam sa većom vremenskom složenošću brže radi od algoritma sa manjom vremenskom složenošću.
+-Ukoliko algoritam manje slozenosti ima dosta skupih operacija (alokacije i rad sa vektorima, vise se oslanja na deljenje umesto na mnozenje) - primer bi mozda bila neka vrsta dinamickog programiranja gde bi se slozenost poboljsala koriscenjem neke ogromne strukture podataka.
+
+22. Ako dva algoritma imaju istu vremensku složenost, kako da znamo koji da iskoristimo. Navesti barem jedan alat koji može da se iskoristi u ovoj situaciji.
+-Koristimo onaj koji ima brze pojedinacne operacije - manje alokacija, rada sa vektorima i sl. Callgrind.
+
+23. Kako možemo u C++-u da automatski odredimo da li neka jedinica nije testirana?
+
+24. Šta je clang?
+-Alat (linter) koji omogucava standardizaciju i dodatno povecanje citljivosti i kvaliteta koda.
+
+25. Šta je docker-compose?
+-Alat koji kombinuje i uproscava koriscenje vise kontejnera koji komuniciraju medjusobno u istom projektu. Omogucava definisanje i pokretanje Docker aplikacija sa vise kontejnera.
+
+26. Koje su prednosti korišćenja kontinualne integracije?
+-Prilikom komitovanja se pokrece nekakav prethodno definisani proces testiranja koda - ovime se ubrzava proces testiranja i omogucava se rano hvatanje nekih malih gresaka koje mogu napraviti problem u buducnosti.
