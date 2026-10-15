@@ -1,0 +1,433 @@
+{
+  "imported_at": "2026-10-15T12:25:18.621363+00:00",
+  "method": "Subtree imports preserving original commit and tree objects",
+  "source_count": 22,
+  "sources": [
+    {
+      "name": "M133_Application_Of_Projective_Geometry_In_Computing",
+      "repository_full_name": "veksku/M133_Application_Of_Projective_Geometry_In_Computing",
+      "clone_url": "https://github.com/veksku/M133_Application_Of_Projective_Geometry_In_Computing.git",
+      "default_branch": "main",
+      "head_sha": "34f1b91edf046cdfe70c0779e8c96a9e98ea2e15",
+      "tree_sha": "ac2dddf04ec0a2318d7bd909c8c3818d930eb017",
+      "commit_count": 8,
+      "file_count": 13,
+      "refs": [
+        {
+          "source_ref": "refs/heads/main",
+          "destination_ref": "refs/heads/source/M133_Application_Of_Projective_Geometry_In_Computing/main",
+          "sha": "34f1b91edf046cdfe70c0779e8c96a9e98ea2e15"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "M150_Introduction_to_Numerical_Mathematics",
+      "repository_full_name": "veksku/M150_Introduction_to_Numerical_Mathematics",
+      "clone_url": "https://github.com/veksku/M150_Introduction_to_Numerical_Mathematics.git",
+      "default_branch": "main",
+      "head_sha": "9500a15b01c3dac6d66607c21fea134d2d0e552b",
+      "tree_sha": "6e50c8587c5afc16d874154d486157a7970e4a8d",
+      "commit_count": 19,
+      "file_count": 53,
+      "refs": [
+        {
+          "source_ref": "refs/heads/main",
+          "destination_ref": "refs/heads/source/M150_Introduction_to_Numerical_Mathematics/main",
+          "sha": "9500a15b01c3dac6d66607c21fea134d2d0e552b"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "P101_Programming_2",
+      "repository_full_name": "veksku/P101_Programming_2",
+      "clone_url": "https://github.com/veksku/P101_Programming_2.git",
+      "default_branch": "master",
+      "head_sha": "0395e2f076a713f437899c9d3cceddbaf989d065",
+      "tree_sha": "4431b64bffbd27c4fe6a862bbc9d43fff6b60fb1",
+      "commit_count": 12,
+      "file_count": 54,
+      "refs": [
+        {
+          "source_ref": "refs/heads/master",
+          "destination_ref": "refs/heads/source/P101_Programming_2/master",
+          "sha": "0395e2f076a713f437899c9d3cceddbaf989d065"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "P102_Object-Oriented_Programming",
+      "repository_full_name": "veksku/P102_Object-Oriented_Programming",
+      "clone_url": "https://github.com/veksku/P102_Object-Oriented_Programming.git",
+      "default_branch": "master",
+      "head_sha": "9ae08018d91a95d623f61206d349a6b17681a598",
+      "tree_sha": "ef60273532b0fb6af967fbff779e3cda53458faf",
+      "commit_count": 6,
+      "file_count": 63,
+      "refs": [
+        {
+          "source_ref": "refs/heads/master",
+          "destination_ref": "refs/heads/source/P102_Object-Oriented_Programming/master",
+          "sha": "9ae08018d91a95d623f61206d349a6b17681a598"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "P103_Algorithms_and_Data_Structures",
+      "repository_full_name": "veksku/P103_Algorithms_and_Data_Structures",
+      "clone_url": "https://github.com/veksku/P103_Algorithms_and_Data_Structures.git",
+      "default_branch": "master",
+      "head_sha": "3650403769c58df4bb31b93f23ed405d5042432d",
+      "tree_sha": "630252389acf2706f32307c77b16d1a639ca9384",
+      "commit_count": 25,
+      "file_count": 14,
+      "refs": [
+        {
+          "source_ref": "refs/heads/master",
+          "destination_ref": "refs/heads/source/P103_Algorithms_and_Data_Structures/master",
+          "sha": "3650403769c58df4bb31b93f23ed405d5042432d"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "R130_Introduction_to_Web_and_Internet_Technologies",
+      "repository_full_name": "veksku/R130_Introduction_to_Web_and_Internet_Technologies",
+      "clone_url": "https://github.com/veksku/R130_Introduction_to_Web_and_Internet_Technologies.git",
+      "default_branch": "master",
+      "head_sha": "d0d9cbd9f4d8f15b98e9a30932d56d21d22c26e3",
+      "tree_sha": "d578eba75912434f7904873d87d544542059fe9a",
+      "commit_count": 27,
+      "file_count": 61,
+      "refs": [
+        {
+          "source_ref": "refs/heads/dependabot/npm_and_yarn/2019-20-Februar_reseno/express-4.17.3",
+          "destination_ref": "refs/heads/source/R130_Introduction_to_Web_and_Internet_Technologies/dependabot/npm_and_yarn/2019-20-Februar_reseno/express-4.17.3",
+          "sha": "9538f6bd7659b219e153863e1ae7fbbb2116dc93"
+        },
+        {
+          "source_ref": "refs/heads/dependabot/npm_and_yarn/2019-20-Februar_reseno/mongoose-5.13.15",
+          "destination_ref": "refs/heads/source/R130_Introduction_to_Web_and_Internet_Technologies/dependabot/npm_and_yarn/2019-20-Februar_reseno/mongoose-5.13.15",
+          "sha": "0483b3062c62f02b57b5a5c0f3d55ca68925c0ef"
+        },
+        {
+          "source_ref": "refs/heads/dependabot/npm_and_yarn/2019-20-Februar_reseno/qs-and-body-parser-and-express-6.11.0",
+          "destination_ref": "refs/heads/source/R130_Introduction_to_Web_and_Internet_Technologies/dependabot/npm_and_yarn/2019-20-Februar_reseno/qs-and-body-parser-and-express-6.11.0",
+          "sha": "115ea9f815e06665f3fe9ef3d3dcbd52019f2531"
+        },
+        {
+          "source_ref": "refs/heads/dependabot/npm_and_yarn/2019-20-Januar_reseno/express-4.17.3",
+          "destination_ref": "refs/heads/source/R130_Introduction_to_Web_and_Internet_Technologies/dependabot/npm_and_yarn/2019-20-Januar_reseno/express-4.17.3",
+          "sha": "4a8b5534364690d0d940ad8cb7ee4ed59f9a4823"
+        },
+        {
+          "source_ref": "refs/heads/dependabot/npm_and_yarn/2019-20-Januar_reseno/mongoose-5.13.15",
+          "destination_ref": "refs/heads/source/R130_Introduction_to_Web_and_Internet_Technologies/dependabot/npm_and_yarn/2019-20-Januar_reseno/mongoose-5.13.15",
+          "sha": "8c323f78ee9c07c65309de4f45974c0a9a72668a"
+        },
+        {
+          "source_ref": "refs/heads/dependabot/npm_and_yarn/2019-20-Januar_reseno/qs-and-body-parser-and-express-6.11.0",
+          "destination_ref": "refs/heads/source/R130_Introduction_to_Web_and_Internet_Technologies/dependabot/npm_and_yarn/2019-20-Januar_reseno/qs-and-body-parser-and-express-6.11.0",
+          "sha": "e0fb79562228b10d037dbaebf443d7485d0a008f"
+        },
+        {
+          "source_ref": "refs/heads/master",
+          "destination_ref": "refs/heads/source/R130_Introduction_to_Web_and_Internet_Technologies/master",
+          "sha": "d0d9cbd9f4d8f15b98e9a30932d56d21d22c26e3"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "R210_Algorithm_Construction_and_Analysis",
+      "repository_full_name": "veksku/R210_Algorithm_Construction_and_Analysis",
+      "clone_url": "https://github.com/veksku/R210_Algorithm_Construction_and_Analysis.git",
+      "default_branch": "master",
+      "head_sha": "4befcb2eb92c68d1caf9f1cf16fc9c7a76963ba8",
+      "tree_sha": "d44bb5f7be624c4244fba45c54d27d44114f058a",
+      "commit_count": 39,
+      "file_count": 158,
+      "refs": [
+        {
+          "source_ref": "refs/heads/master",
+          "destination_ref": "refs/heads/source/R210_Algorithm_Construction_and_Analysis/master",
+          "sha": "4befcb2eb92c68d1caf9f1cf16fc9c7a76963ba8"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "R220_Introduction_to_Computer_Organization_and_Architecture_2",
+      "repository_full_name": "veksku/R220_Introduction_to_Computer_Organization_and_Architecture_2",
+      "clone_url": "https://github.com/veksku/R220_Introduction_to_Computer_Organization_and_Architecture_2.git",
+      "default_branch": "master",
+      "head_sha": "1ef50fa55d1a69df50b2257ea9b97d9e46431d74",
+      "tree_sha": "a8632f87a8a7a2ee97e6c303fff238c6522ee72d",
+      "commit_count": 5,
+      "file_count": 31,
+      "refs": [
+        {
+          "source_ref": "refs/heads/master",
+          "destination_ref": "refs/heads/source/R220_Introduction_to_Computer_Organization_and_Architecture_2/master",
+          "sha": "1ef50fa55d1a69df50b2257ea9b97d9e46431d74"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "R225_Operating_Systems",
+      "repository_full_name": "veksku/R225_Operating_Systems",
+      "clone_url": "https://github.com/veksku/R225_Operating_Systems.git",
+      "default_branch": "master",
+      "head_sha": "f7db24f871f697350c410d8109cd724ea2d7946e",
+      "tree_sha": "2a91b290f16532bf602eb5ee7a064ab57aa3a5db",
+      "commit_count": 5,
+      "file_count": 9,
+      "refs": [
+        {
+          "source_ref": "refs/heads/master",
+          "destination_ref": "refs/heads/source/R225_Operating_Systems/master",
+          "sha": "f7db24f871f697350c410d8109cd724ea2d7946e"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "R240_Programming_Language_Translation",
+      "repository_full_name": "veksku/R240_Programming_Language_Translation",
+      "clone_url": "https://github.com/veksku/R240_Programming_Language_Translation.git",
+      "default_branch": "main",
+      "head_sha": "37ef6bd85d4af1db85cb42293e47de140ebb8dad",
+      "tree_sha": "3d9a62d114ac9acc45a33f02049e9b51e30dc178",
+      "commit_count": 32,
+      "file_count": 104,
+      "refs": [
+        {
+          "source_ref": "refs/heads/main",
+          "destination_ref": "refs/heads/source/R240_Programming_Language_Translation/main",
+          "sha": "37ef6bd85d4af1db85cb42293e47de140ebb8dad"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "R245_Programming_Paradigms",
+      "repository_full_name": "veksku/R245_Programming_Paradigms",
+      "clone_url": "https://github.com/veksku/R245_Programming_Paradigms.git",
+      "default_branch": "main",
+      "head_sha": "d99addffbe6c82bf4ea496b45152f0bf0ffeb4b8",
+      "tree_sha": "c2572cf9a9b72ac5489d7a660c892368d3ea2c29",
+      "commit_count": 43,
+      "file_count": 56,
+      "refs": [
+        {
+          "source_ref": "refs/heads/main",
+          "destination_ref": "refs/heads/source/R245_Programming_Paradigms/main",
+          "sha": "d99addffbe6c82bf4ea496b45152f0bf0ffeb4b8"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "R255_Computer_Graphics",
+      "repository_full_name": "veksku/R255_Computer_Graphics",
+      "clone_url": "https://github.com/veksku/R255_Computer_Graphics.git",
+      "default_branch": "main",
+      "head_sha": "c40141450915de7953682a136faab931bb9def5f",
+      "tree_sha": "689d51c7906ffd08d7d67a3b00cb6f13e5b82408",
+      "commit_count": 34,
+      "file_count": 156,
+      "refs": [
+        {
+          "source_ref": "refs/heads/main",
+          "destination_ref": "refs/heads/source/R255_Computer_Graphics/main",
+          "sha": "c40141450915de7953682a136faab931bb9def5f"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "R260_Artificial_Intelligence",
+      "repository_full_name": "veksku/R260_Artificial_Intelligence",
+      "clone_url": "https://github.com/veksku/R260_Artificial_Intelligence.git",
+      "default_branch": "main",
+      "head_sha": "29ca87682eddcfa2a1ef63070bb08433d54d75c8",
+      "tree_sha": "853dda8c287e9d08de54e0d71e795e16c3a443d8",
+      "commit_count": 125,
+      "file_count": 47,
+      "refs": [
+        {
+          "source_ref": "refs/heads/main",
+          "destination_ref": "refs/heads/source/R260_Artificial_Intelligence/main",
+          "sha": "29ca87682eddcfa2a1ef63070bb08433d54d75c8"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "R269_Computational_Intelligence",
+      "repository_full_name": "veksku/R269_Computational_Intelligence",
+      "clone_url": "https://github.com/veksku/R269_Computational_Intelligence.git",
+      "default_branch": "main",
+      "head_sha": "686fe0ff460aff08ca9b1cd5295625298249720a",
+      "tree_sha": "b67a25ae0d281a9e18eadafefbaab0415efb981f",
+      "commit_count": 85,
+      "file_count": 60,
+      "refs": [
+        {
+          "source_ref": "refs/heads/main",
+          "destination_ref": "refs/heads/source/R269_Computational_Intelligence/main",
+          "sha": "686fe0ff460aff08ca9b1cd5295625298249720a"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "R270_Relational_Databases",
+      "repository_full_name": "veksku/R270_Relational_Databases",
+      "clone_url": "https://github.com/veksku/R270_Relational_Databases.git",
+      "default_branch": "main",
+      "head_sha": "403cb7e85bcfd3f1a1ed4ec49ee1b8fbc6a02b34",
+      "tree_sha": "7b99c59004718b768fd3d5439500978f81732b08",
+      "commit_count": 48,
+      "file_count": 34,
+      "refs": [
+        {
+          "source_ref": "refs/heads/main",
+          "destination_ref": "refs/heads/source/R270_Relational_Databases/main",
+          "sha": "403cb7e85bcfd3f1a1ed4ec49ee1b8fbc6a02b34"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "R290_Software_Development",
+      "repository_full_name": "veksku/R290_Software_Development",
+      "clone_url": "https://github.com/veksku/R290_Software_Development.git",
+      "default_branch": "main",
+      "head_sha": "88a62aaea2a97e693a3357511c5402d6e8685d86",
+      "tree_sha": "e768093f45a0fb2ceb70f5e9cdcfa29cc5128b54",
+      "commit_count": 16,
+      "file_count": 115,
+      "refs": [
+        {
+          "source_ref": "refs/heads/main",
+          "destination_ref": "refs/heads/source/R290_Software_Development/main",
+          "sha": "88a62aaea2a97e693a3357511c5402d6e8685d86"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "R292_Tools_For_Software_Development",
+      "repository_full_name": "veksku/R292_Tools_For_Software_Development",
+      "clone_url": "https://github.com/veksku/R292_Tools_For_Software_Development.git",
+      "default_branch": "main",
+      "head_sha": "1a8018d88b0b7b68972d4c504b4dae4efb870134",
+      "tree_sha": "d68c4151413e5682d93a48a4bf476ef7cdb37434",
+      "commit_count": 16,
+      "file_count": 61,
+      "refs": [
+        {
+          "source_ref": "refs/heads/main",
+          "destination_ref": "refs/heads/source/R292_Tools_For_Software_Development/main",
+          "sha": "1a8018d88b0b7b68972d4c504b4dae4efb870134"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "RXXX_Computer_Networks",
+      "repository_full_name": "veksku/RXXX_Computer_Networks",
+      "clone_url": "https://github.com/veksku/RXXX_Computer_Networks.git",
+      "default_branch": "main",
+      "head_sha": "f7401d31a2aee27e93f6cf732eff1eca9a610c65",
+      "tree_sha": "4d9ce6f149953ad1bb0534d0cdfea3404b0d92bb",
+      "commit_count": 23,
+      "file_count": 60,
+      "refs": [
+        {
+          "source_ref": "refs/heads/main",
+          "destination_ref": "refs/heads/source/RXXX_Computer_Networks/main",
+          "sha": "f7401d31a2aee27e93f6cf732eff1eca9a610c65"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "RXXX_Database_Projection",
+      "repository_full_name": "veksku/RXXX_Database_Projection",
+      "clone_url": "https://github.com/veksku/RXXX_Database_Projection.git",
+      "default_branch": "main",
+      "head_sha": "03d0c7ee9585e39172d9ae0bb3a18ce6038c8bab",
+      "tree_sha": "e9ea5e4335c8c05d6ba770e493a0b916c28d8b3c",
+      "commit_count": 5,
+      "file_count": 22,
+      "refs": [
+        {
+          "source_ref": "refs/heads/main",
+          "destination_ref": "refs/heads/source/RXXX_Database_Projection/main",
+          "sha": "03d0c7ee9585e39172d9ae0bb3a18ce6038c8bab"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "RXXX_Data_Mining",
+      "repository_full_name": "veksku/RXXX_Data_Mining",
+      "clone_url": "https://github.com/veksku/RXXX_Data_Mining.git",
+      "default_branch": "main",
+      "head_sha": "34872e1057fd242ad3d70cff67cfcbf94bc96346",
+      "tree_sha": "5c9951c9f34f65f72f0d9d07264c26d8cfcd5524",
+      "commit_count": 6,
+      "file_count": 8,
+      "refs": [
+        {
+          "source_ref": "refs/heads/main",
+          "destination_ref": "refs/heads/source/RXXX_Data_Mining/main",
+          "sha": "34872e1057fd242ad3d70cff67cfcbf94bc96346"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "RXXX_Functional_Programming",
+      "repository_full_name": "veksku/RXXX_Functional_Programming",
+      "clone_url": "https://github.com/veksku/RXXX_Functional_Programming.git",
+      "default_branch": "main",
+      "head_sha": "b96351fb4617a408215ac0b5dbaed92ed85f1635",
+      "tree_sha": "b89bf14240a825e8e82ebb72bc07e80e916f9ebf",
+      "commit_count": 11,
+      "file_count": 45,
+      "refs": [
+        {
+          "source_ref": "refs/heads/main",
+          "destination_ref": "refs/heads/source/RXXX_Functional_Programming/main",
+          "sha": "b96351fb4617a408215ac0b5dbaed92ed85f1635"
+        }
+      ],
+      "special_entries": []
+    },
+    {
+      "name": "SPK61_Symbolic_computing",
+      "repository_full_name": "veksku/SPK61_Symbolic_computing",
+      "clone_url": "https://github.com/veksku/SPK61_Symbolic_computing.git",
+      "default_branch": "main",
+      "head_sha": "e67a360a285bb06f5c816aebf299dc358d98dfe3",
+      "tree_sha": "2b7091e689c78643198ff6448139f829cef39db1",
+      "commit_count": 2,
+      "file_count": 13,
+      "refs": [
+        {
+          "source_ref": "refs/heads/main",
+          "destination_ref": "refs/heads/source/SPK61_Symbolic_computing/main",
+          "sha": "e67a360a285bb06f5c816aebf299dc358d98dfe3"
+        }
+      ],
+      "special_entries": []
+    }
+  ]
+}
