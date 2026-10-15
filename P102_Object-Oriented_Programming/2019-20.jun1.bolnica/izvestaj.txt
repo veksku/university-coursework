@@ -1,0 +1,32 @@
+Cekaju:
+
+Id: 2 Laza Lazic
+Boluje od: Grip traje: 3 Vreme do izlecenja 3
+Id: 3 Mara Maric
+Boluje od: Grip traje: 10 Vreme do izlecenja 10
+Id: 4 Boza Bozic
+Boluje od: Korona traje: 1 bez simptoma Vreme do izlecenja 1
+Id: 5 Dora Doric
+Boluje od: Korona traje: 7 sa simptomima Vreme do izlecenja 7
+Id: 0 Pera Peric
+Boluje od: Korona traje: 2 sa simptomima Vreme do izlecenja 2
+Id: 1 Mika Mikic
+Boluje od: Korona traje: 5 bez simptoma Vreme do izlecenja 5
+Id: 2 Laza Lazic
+Boluje od: Grip traje: 3 Vreme do izlecenja 3
+Id: 3 Mara Maric
+Boluje od: Grip traje: 10 Vreme do izlecenja 10
+Id: 4 Boza Bozic
+Boluje od: Korona traje: 1 bez simptoma Vreme do izlecenja 1
+Id: 5 Dora Doric
+Boluje od: Korona traje: 7 sa simptomima Vreme do izlecenja 7
+
+U izolaciji:
+
+Id: 0 Pera Peric
+Boluje od: Korona traje: 2 sa simptomima Vreme do izlecenja 2
+Id: 1 Mika Mikic
+Boluje od: Korona traje: 5 bez simptoma Vreme do izlecenja 5
+
+Zdravi:
+
